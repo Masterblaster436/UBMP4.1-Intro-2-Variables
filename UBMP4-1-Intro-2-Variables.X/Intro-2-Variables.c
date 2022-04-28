@@ -79,12 +79,18 @@ int main(void)
  *    of the benefits and drawbacks of using 8-bit variables in an 8-bit
  *    microcontroller?
  * 
+ *    The maximum value an 8-bit variable can store is 255.
+ *    One benefit of using an 8-bit variable is that values can be reused.
+ *    One drawback of using an 8-bit variable is that storage will be used to store the variable.
+ *
  * 2. The constant 'maxCount' is defined using a declaration similar to that
  *    used for the SW2Count variable, but with the 'const' prefix added in the
  *    declaration. Can you think of some advantages of declaring a constant like
  *    this, using a separate statement above the main code, rather than just
  *    embedding the value of the constant where it is needed in the code?
  * 
+ *    One advantage is that it will be easier to see what the constant is used for.
+ *
  * 3. This program should light LED D3 every time SW2 is pressed, and light
  *    LED D4 once the count reaches 50. Try it, and count how many times you
  *    have to press the button until LED D4 turns on. SW3 resets the count so
@@ -93,6 +99,8 @@ int main(void)
  *    Did your count reach 50? Can you describe what the program is doing?
  *    (Hint: try pressing and releasing the button at different rates of speed.)
  * 
+ *    Yes, the count reached 50. The program is counting how long SW2 is pressed in milliseconds.
+ *
  * 4. Modify the second 'if' structure to add the else block, as shown below:
 
         if(SW2Count >= maxCount)
@@ -110,6 +118,9 @@ int main(void)
  *    value of the SW2Count variable? Can you explain what happens to the
  *    SW2Count variable as the SW2 button is held?
  * 
+ *    It can be inferred that the value of SW2 count resets after it reaches 255. 
+ *    When SW2 is pressed, SW2Count counts the number of presses, even if there are no new presses.
+ *
  * 5. We can set a limit on the SW2Count variable by encapsulating its increment
  *    statement inside a conditional statement. In your program, replace the
  *    line 'SW2Count = SW2Count + 1;' with the code, below:
@@ -125,6 +136,9 @@ int main(void)
  *    value that the SW2Count variable will reach? How does this affect the
  *    operation of LED D4 when SW2 is held?
  *
+ *    The maximum value that SW2Count will reach is 255.
+ *    This means that the value of SW2Count will not reset when it reaches 255.
+ *    
  * 6. The fundamental problem with this program is that pushbutton SW2 is sensed
  *    in each cycle of the loop, and if its state is read as pressed, another
  *    count is added to the SW2Count variable. The program needs to be made to
