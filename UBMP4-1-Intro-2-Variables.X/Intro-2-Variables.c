@@ -232,6 +232,91 @@ int main(void)
  *    by clearing the count and turning off the LEDs if either SW3 or SW4 is
  *    pressed.
  * 
+ *      // Code in this while loop runs repeatedly.
+ * while(1)
+ * {
+ *   if(SW2 == 0 && SW2Pressed == false)
+ *   {
+ *       LED3 = 1;
+ *       SW2Pressed = true;
+ *       if(SW2Count < 255)
+ *       {
+ *           SW2Count = SW2Count + 1;
+ *       }
+ *   }
+ *   // Clear pressed state if released
+ *   if(SW2 == 1)
+ *   {
+ *       LED3 = 0;
+ *       SW2Pressed = false;
+ *   }
+ *   
+ *   if(SW2Count >= maxCount)
+ *   {
+ *       LED4 = 1;
+ *   }
+ *   
+ *   // Reset count and turn off LED D4
+ *   if(SW2Count >= maxCount)
+ *   {
+ *       LED4 = 1;
+ *   }
+ *   else
+ *   {
+ *       LED4 = 0;
+ *   }
+ *   if(SW3 == 0)
+ *   {
+ *       LED4 = 0;
+ *       SW2Count = 0;
+ *   }
+ * /////////////////////////////////////////
+ *   if(SW5 == 0 && SW5Pressed == false)
+ *   {
+ *       LED6 = 1;
+ *       SW5Pressed = true;
+ *       if(SW5Count < 255)
+ *       {
+ *           SW5Count = SW5Count + 1;
+ *       }
+ *   }
+ *   // Clear pressed state if released
+ *   if(SW5 == 1)
+ *   {
+ *       LED6 = 0;
+ *       SW5Pressed = false;
+ *   }
+ *   
+ *   if(SW5Count >= maxCount)
+ *   {
+ *       LED5 = 1;
+ *   }
+ *   
+ *   // Reset count and turn off LED D4
+ *   if(SW5Count >= maxCount)
+ *   {
+ *       LED5 = 1;
+ *   }
+ *   else
+ *   {
+ *       LED5 = 0;
+ *   }
+ *   if(SW4 == 0)
+ *   {
+ *       LED5 = 0;
+ *       SW5Count = 0;
+ *   }
+ *   // Add a short delay to the main while loop.
+ *   __delay_ms(10);
+ *   
+ *   // Activate bootloader if SW1 is pressed.
+ *   if(SW1 == 0)
+ *   {
+ *       RESET();
+ *   }
+ *   }
+ *    }
+ *
  * 2. Use your knowledge of Boolean variables and logical conditions to simulate
  *    a toggle button. Each new press of the toggle button will 'toggle' an LED
  *    to its opposite state. (Toggle buttons are commonly used as push-on, 
